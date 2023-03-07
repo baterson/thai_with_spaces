@@ -11,7 +11,10 @@ const withSpaces = (text) => {
 
 const Wrapper = ({ children }) => {
   return (
-    <div className="relative h-full w-full box-border flex flex-col flex-wrap">
+    <div
+      data-testId="app-wrapper"
+      className="relative h-full w-full box-border flex flex-col flex-wrap"
+    >
       {children}
     </div>
   );
