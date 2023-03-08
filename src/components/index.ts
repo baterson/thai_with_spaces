@@ -1,5 +1,5 @@
 export * from './AppWrapper'
-export * from './Button'
+export * from './MainButton'
 export * from './Navbar'
 export * from './SideMenu'
 export * from './TextScreen'

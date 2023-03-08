@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
-import { FaWindowClose } from 'react-icons/fa'
+import React, { useState, FC } from 'react'
+import { ScreenThemeKeys, ScreenThemeValues } from '../../utils/screenTheme'
+import { FontStyleMenuItem, FontSizeMenuItem } from './components'
 
 const MENU_ITEMS = {
   none: '',
   fontSize: 'Fontsize',
-  fontFamily: 'FontFamily',
-}
+  fontStyle: 'FontStyle',
+} as const
 
-export const SideMenu = ({ onClose, setFontSize }) => {
-  const [activeMenu, setActiveMenu] = useState(MENU_ITEMS.none)
+type MenuKeys = keyof typeof MENU_ITEMS
+type MenuItemName = typeof MENU_ITEMS[MenuKeys]
 
-  const handleFontSize = (fontSize) => {
-    setFontSize(fontSize)
+export const SideMenu: FC<Props> = ({ onClose, setScreenThemeValue }) => {
+  const [activeMenu, setActiveMenu] = useState<MenuItemName>(MENU_ITEMS.none)
+
+  const handleThemeChange = (key: ScreenThemeKeys) => (value: ScreenThemeValues) => {
+    setScreenThemeValue(key, value)
     setActiveMenu(MENU_ITEMS.none)
     onClose()
   }
-
-  const isMenuItemActive = (itemName: string) => activeMenu === itemName
-  const setMenuItemActive = (itemName: string) => () => {
+  const isMenuItemActive = (itemName: MenuItemName) => activeMenu === itemName
+  const setMenuItemActive = (itemName: MenuItemName) => () => {
     if (itemName === activeMenu) {
       setActiveMenu(MENU_ITEMS.none)
     } else {
@@ -27,13 +30,22 @@ export const SideMenu = ({ onClose, setFontSize }) => {
 
   return (
     <div
-      className={`text-xl bg-white fixed top-0 left-0 z-30 w-64 h-screen p-4 pt-10 transition-all ${window.colors.app}`}
+      id='drawer-example'
+      tabIndex={-1}
+      className={`text-xl bg-white fixed top-0 left-0 z-2 w-64 h-screen p-4 ${window.colors.app}`}
     >
+      <p className='mb-5 pb-2  border-b'>Screen Configuration</p>
       <ul className='space-y-5'>
+        <FontStyleMenuItem
+          isActive={isMenuItemActive(MENU_ITEMS.fontStyle)}
+          onClick={setMenuItemActive(MENU_ITEMS.fontStyle)}
+          onChange={handleThemeChange('fontStyle')}
+          key='fontStyle'
+        />
         <FontSizeMenuItem
           isActive={isMenuItemActive(MENU_ITEMS.fontSize)}
           onClick={setMenuItemActive(MENU_ITEMS.fontSize)}
-          onFontChange={handleFontSize}
+          onChange={handleThemeChange('fontSize')}
           key='fontSize'
         />
       </ul>
@@ -41,33 +53,7 @@ export const SideMenu = ({ onClose, setFontSize }) => {
   )
 }
 
-const FontSizeMenuItem = ({ isActive, onClick, onFontChange }) => {
-  return (
-    <li>
-      <SideMenuButton isActive={isActive} onClick={onClick}>
-        Font sizes
-      </SideMenuButton>
-      {isActive && (
-        <ul className='py-2 space-y-2'>
-          {['text-2xl', 'text-3xl', 'text-4xl', 'text-5xl', 'text-6xl'].map((fontSize) => (
-            <li className={`${fontSize} w-full`} onClick={() => onFontChange(fontSize)}>
-              Aaaa
-            </li>
-          ))}
-        </ul>
-      )}
-    </li>
-  )
-}
-
-const SideMenuButton = ({ onClick, isActive, children }) => {
-  const activeStyles = 'text-indigo-900'
-  return (
-    <button
-      onClick={onClick}
-      className={`flex items-center w-full font-normal ${isActive && activeStyles}`}
-    >
-      {children}
-    </button>
-  )
+type Props = {
+  onClose: () => void
+  setScreenThemeValue: (key: ScreenThemeKeys, value: ScreenThemeValues) => void
 }

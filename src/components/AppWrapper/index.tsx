@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
 
-export const AppWrapper = ({ children, isDarkTheme }) => {
+export const AppWrapper: FC<Props> = ({ children, isDarkTheme }) => {
   return (
     <div
       data-testid='app-wrapper'
@@ -11,4 +11,9 @@ export const AppWrapper = ({ children, isDarkTheme }) => {
       {children}
     </div>
   )
+}
+
+type Props = {
+  children: ReactNode
+  isDarkTheme: boolean
 }

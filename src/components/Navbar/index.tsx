@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactNode, FC } from 'react'
 
-export const Navbar = ({ children }) => {
+export const Navbar: FC<Props> = ({ children }) => {
   return (
     <div
       className={`flex justify-between items-center py-7 px-5 h-10 text-xl ${window.colors.nav}`}
@@ -8,4 +8,8 @@ export const Navbar = ({ children }) => {
       {children}
     </div>
   )
+}
+
+type Props = {
+  children: ReactNode
 }

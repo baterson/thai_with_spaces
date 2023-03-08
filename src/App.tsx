@@ -1,24 +1,36 @@
-import React, { useState } from 'react'
-import { Navbar, SideMenu, Button, TextScreen, AppWrapper, DarkModeToggle } from './components'
+import React, { useState, ChangeEvent } from 'react'
+import { HoryzontalSlide } from './components/Animation/HoryzontalSlide'
+
+import { Navbar, SideMenu, MainButton, TextScreen, AppWrapper, DarkModeToggle } from './components'
 import { FaBars } from 'react-icons/fa'
 import { segmentText } from './utils/segmenter'
+import { initialScreenTheme } from './utils/screenTheme'
 
+// temp hack
 window.colors = {
   //   app: 'bg-[#edf2fb]',
-  nav: 'bg-[#ffffff]',
+  nav: 'bg-white',
   //   side: 'bg-[#ccdbfd]',
-  btn: 'bg-[#abc4ff]',
+  btn: 'bg-white',
 }
 
 function App() {
-  const [isDarkThemeActive, setDarkThemeActive] = React.useState(false)
+  const [isDarkThemeActive, setDarkThemeActive] = useState(false)
+  const [screenTheme, setScreenThemeValue] = useState(initialScreenTheme)
   const [isInputActive, setInputActive] = useState(true)
   const [inputValue, setInputValue] = useState('ฉันไปกิน')
   const [isMenuOpen, setMenuOpen] = useState(false)
-  const [fontSize, setFontsize] = useState('text-2xl')
 
   return (
     <AppWrapper isDarkTheme={isDarkThemeActive}>
+      <HoryzontalSlide show={isMenuOpen} onBackgroundClick={() => setMenuOpen(!isMenuOpen)}>
+        <SideMenu
+          setScreenThemeValue={(key, value) =>
+            setScreenThemeValue({ ...screenTheme, [key]: value })
+          }
+          onClose={() => setMenuOpen(false)}
+        />
+      </HoryzontalSlide>
       <Navbar>
         <FaBars onClick={() => setMenuOpen(!isMenuOpen)} />
         <DarkModeToggle
@@ -26,17 +38,16 @@ function App() {
           onClick={() => setDarkThemeActive(!isDarkThemeActive)}
         />
       </Navbar>
-      {isMenuOpen && <SideMenu setFontSize={setFontsize} onClose={() => setMenuOpen(false)} />}
       <TextScreen
         isDisabled={!isInputActive}
-        fontSize={fontSize}
+        screenTheme={screenTheme}
         onClick={() => setMenuOpen(false)}
         value={isInputActive ? inputValue : segmentText(inputValue)}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
       />
-      <Button onClick={() => setInputActive(!isInputActive)}>
-        {isInputActive ? 'Add spaces' : 'Start typing'}
-      </Button>
+      <MainButton onClick={() => setInputActive(!isInputActive)}>
+        {isInputActive ? 'Add Spaces' : 'Start Typing'}
+      </MainButton>
     </AppWrapper>
   )
 }
