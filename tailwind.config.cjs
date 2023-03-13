@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        itim: ['ITIM'],
+        notoSansThai: ['NotoSansThai'],
+        notoSerifThai: ['NotoSerifThai'],
+        sono: ['Sono'],
       },
     },
   },

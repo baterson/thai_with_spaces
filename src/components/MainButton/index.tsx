@@ -1,8 +1,14 @@
 import React, { FC, ReactNode } from 'react'
 
-export const MainButton: FC<Props> = ({ children, onClick }) => {
+export const MainButton: FC<Props> = ({ children, onClick, isEditState }) => {
+  const bgStyle = isEditState ? 'bg-violet-500' : 'bg-amber-500'
+
   return (
-    <button className={`h-20 text-2xl border-t ${window.colors.btn}`} onClick={onClick}>
+    <button
+      data-testid='main-button'
+      className={`h-16 text-xl text-white rounded-lg ${bgStyle}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   )

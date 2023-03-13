@@ -7,7 +7,7 @@ export const FontStyleMenuItem: FC<Props> = ({ isActive, onClick, onChange }) =>
     <MenuItemWithSubmenu name='Font Style' isActive={isActive} onClick={onClick}>
       {FONT_STYLES.map((fontStyle) => (
         <li className={`${fontStyle} w-full`} onClick={() => onChange(fontStyle)} key={fontStyle}>
-          แบบอักษร
+          ประโยคยาวในภาษาไทย
         </li>
       ))}
     </MenuItemWithSubmenu>

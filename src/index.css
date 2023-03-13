@@ -2,7 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove blue bg on mobile device from the main button, on tap */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 @font-face {
-  font-family: "ITIM";
-  src: url("../assets/fonts/ITIM.ttf");
+  font-family: 'NotoSansThai';
+  src: url('/fonts/NotoSansThai.ttf.ttf');
+}
+@font-face {
+  font-family: 'NotoSerifThai';
+  src: url('/fonts/NotoSerifThai.ttf');
+}
+@font-face {
+  font-family: 'sono';
+  src: url('/fonts/Sono.ttf');
 }

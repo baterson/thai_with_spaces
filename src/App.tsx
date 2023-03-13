@@ -1,52 +1,56 @@
 import React, { useState, ChangeEvent } from 'react'
-import { HoryzontalSlide } from './components/Animation/HoryzontalSlide'
 
-import { Navbar, SideMenu, MainButton, TextScreen, AppWrapper, DarkModeToggle } from './components'
-import { FaBars } from 'react-icons/fa'
+import {
+  Header,
+  ScreenMenu,
+  MainButton,
+  TextScreen,
+  AppWrapper,
+  DarkModeToggle,
+} from './components'
+import { FaFont } from 'react-icons/fa'
 import { segmentText } from './utils/segmenter'
 import { initialScreenTheme } from './utils/screenTheme'
-
-// temp hack
-window.colors = {
-  //   app: 'bg-[#edf2fb]',
-  nav: 'bg-white',
-  //   side: 'bg-[#ccdbfd]',
-  btn: 'bg-white',
-}
+import { Modal } from './components/Modal'
 
 function App() {
   const [isDarkThemeActive, setDarkThemeActive] = useState(false)
+
   const [screenTheme, setScreenThemeValue] = useState(initialScreenTheme)
   const [isInputActive, setInputActive] = useState(true)
-  const [inputValue, setInputValue] = useState('ฉันไปกิน')
+  const [inputValue, setInputValue] = useState('ประโยคยาวในภาษาไทย')
   const [isMenuOpen, setMenuOpen] = useState(false)
 
   return (
     <AppWrapper isDarkTheme={isDarkThemeActive}>
-      <HoryzontalSlide show={isMenuOpen} onBackgroundClick={() => setMenuOpen(!isMenuOpen)}>
-        <SideMenu
-          setScreenThemeValue={(key, value) =>
-            setScreenThemeValue({ ...screenTheme, [key]: value })
-          }
-          onClose={() => setMenuOpen(false)}
-        />
-      </HoryzontalSlide>
-      <Navbar>
-        <FaBars onClick={() => setMenuOpen(!isMenuOpen)} />
+      {isMenuOpen && (
+        <Modal onClose={() => setMenuOpen(!isMenuOpen)}>
+          <ScreenMenu
+            thaiFont={screenTheme.thaiFonts}
+            setScreenThemeValue={(key, value) =>
+              setScreenThemeValue({ ...screenTheme, [key]: value })
+            }
+            onClose={() => setMenuOpen(false)}
+          />
+        </Modal>
+      )}
+      <Header>
+        <FaFont onClick={() => setMenuOpen(!isMenuOpen)} />
         <DarkModeToggle
           isDarkMode={isDarkThemeActive}
           onClick={() => setDarkThemeActive(!isDarkThemeActive)}
         />
-      </Navbar>
+      </Header>
       <TextScreen
         isDisabled={!isInputActive}
         screenTheme={screenTheme}
         onClick={() => setMenuOpen(false)}
         value={isInputActive ? inputValue : segmentText(inputValue)}
+        thaiFont={screenTheme.thaiFonts}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
       />
-      <MainButton onClick={() => setInputActive(!isInputActive)}>
-        {isInputActive ? 'Add Spaces' : 'Start Typing'}
+      <MainButton isEditState={isInputActive} onClick={() => setInputActive(!isInputActive)}>
+        {isInputActive ? 'Add Spaces' : 'Type Text'}
       </MainButton>
     </AppWrapper>
   )
