@@ -4,10 +4,10 @@ export const FONT_WEIGHTS = ['font-light', 'font-medium', 'font-bold'] as const
 export const THAI_FONTS = ['font-notoSansThai', 'font-notoSerifThai'] as const
 
 export const initialScreenTheme: ScreenTheme = {
-  fontSizes: FONT_SIZES[0],
-  fontStyles: FONT_STYLES[0],
-  fontWeights: FONT_WEIGHTS[0],
-  thaiFonts: THAI_FONTS[0],
+  fontSize: FONT_SIZES[0],
+  fontStyle: FONT_STYLES[0],
+  fontWeight: FONT_WEIGHTS[0],
+  thaiFont: THAI_FONTS[0],
 }
 
 export const getScreenThemeStyles = (screenTheme: ScreenTheme) => {
@@ -15,10 +15,10 @@ export const getScreenThemeStyles = (screenTheme: ScreenTheme) => {
 }
 
 export type ScreenTheme = {
-  fontSizes: typeof FONT_SIZES[number]
-  fontStyles: typeof FONT_STYLES[number]
-  fontWeights: typeof FONT_WEIGHTS[number]
-  thaiFonts: typeof THAI_FONTS[number]
+  fontSize: typeof FONT_SIZES[number]
+  fontStyle: typeof FONT_STYLES[number]
+  fontWeight: typeof FONT_WEIGHTS[number]
+  thaiFont: typeof THAI_FONTS[number]
 }
 export type ScreenThemeKeys = keyof ScreenTheme
 export type ScreenThemeValues =

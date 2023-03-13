@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react'
-import { ScreenThemeKeys, ScreenThemeValues } from '../../utils/screenTheme'
+import { ScreenTheme, ScreenThemeKeys, ScreenThemeValues } from '../../utils/screenTheme'
 import {
   FontStyleMenuItem,
   FontSizeMenuItem,
@@ -9,16 +9,16 @@ import {
 
 const MENU_ITEMS = {
   none: '',
-  thaiFonts: 'thaiFonts',
-  fontSizes: 'fontSizes',
-  fontStyles: 'fontStyles',
-  fontWeights: 'fontWeights',
+  thaiFont: 'thaiFont',
+  fontSize: 'fontSize',
+  fontStyle: 'fontStyle',
+  fontWeight: 'fontWeight',
 } as const
 
 type MenuKeys = keyof typeof MENU_ITEMS
 type MenuItemName = typeof MENU_ITEMS[MenuKeys]
 
-export const ScreenMenu: FC<Props> = ({ thaiFont, setScreenThemeValue }) => {
+export const ScreenMenu: FC<Props> = ({ screenTheme, setScreenThemeValue }) => {
   const [activeMenu, setActiveMenu] = useState<MenuItemName>(MENU_ITEMS.none)
 
   const handleThemeChange = (key: ScreenThemeKeys) => (value: ScreenThemeValues) => {
@@ -35,30 +35,30 @@ export const ScreenMenu: FC<Props> = ({ thaiFont, setScreenThemeValue }) => {
   }
 
   return (
-    <div className={`text-xl py-4 px-2  w-full ${thaiFont} font-sono`}>
+    <div className={`text-xl py-4 px-2  w-full ${screenTheme.thaiFont} font-sono`}>
       <ul className='flex flex-col gap-10 justify-start w-full'>
         <ThaiFontsMenuItem
-          isActive={isMenuItemActive(MENU_ITEMS.thaiFonts)}
-          onClick={setMenuItemActive(MENU_ITEMS.thaiFonts)}
-          onChange={handleThemeChange('thaiFonts')}
-          key='fontStyle'
+          isActive={isMenuItemActive(MENU_ITEMS.thaiFont)}
+          onClick={setMenuItemActive(MENU_ITEMS.thaiFont)}
+          onChange={handleThemeChange('thaiFont')}
+          key='thaiFont'
         />
         <FontStyleMenuItem
-          isActive={isMenuItemActive(MENU_ITEMS.fontStyles)}
-          onClick={setMenuItemActive(MENU_ITEMS.fontStyles)}
-          onChange={handleThemeChange('fontStyles')}
+          isActive={isMenuItemActive(MENU_ITEMS.fontStyle)}
+          onClick={setMenuItemActive(MENU_ITEMS.fontStyle)}
+          onChange={handleThemeChange('fontStyle')}
           key='fontStyle'
         />
         <FontWeightMenuItem
-          isActive={isMenuItemActive(MENU_ITEMS.fontWeights)}
-          onClick={setMenuItemActive(MENU_ITEMS.fontWeights)}
-          onChange={handleThemeChange('fontWeights')}
+          isActive={isMenuItemActive(MENU_ITEMS.fontWeight)}
+          onClick={setMenuItemActive(MENU_ITEMS.fontWeight)}
+          onChange={handleThemeChange('fontWeight')}
           key='fontWeight'
         />
         <FontSizeMenuItem
-          isActive={isMenuItemActive(MENU_ITEMS.fontSizes)}
-          onClick={setMenuItemActive(MENU_ITEMS.fontSizes)}
-          onChange={handleThemeChange('fontSizes')}
+          isActive={isMenuItemActive(MENU_ITEMS.fontSize)}
+          onClick={setMenuItemActive(MENU_ITEMS.fontSize)}
+          onChange={handleThemeChange('fontSize')}
           key='fontSize'
         />
       </ul>
@@ -68,5 +68,6 @@ export const ScreenMenu: FC<Props> = ({ thaiFont, setScreenThemeValue }) => {
 
 type Props = {
   onClose: () => void
+  screenTheme: ScreenTheme
   setScreenThemeValue: (key: ScreenThemeKeys, value: ScreenThemeValues) => void
 }

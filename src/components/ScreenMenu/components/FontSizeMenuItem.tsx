@@ -2,8 +2,6 @@ import { FONT_SIZES, ScreenThemeValues } from '../../../utils/screenTheme'
 import React, { FC } from 'react'
 import { MenuItemWithSubmenu } from './MenuItemWithSubmenu'
 
-var c = ['font-NotoSansThai', 'font-NotoSerifThai', 'font-Sono']
-
 export const FontSizeMenuItem: FC<Props> = ({ isActive, onClick, onChange }) => {
   return (
     <MenuItemWithSubmenu name='Font Size' isActive={isActive} onClick={onClick}>

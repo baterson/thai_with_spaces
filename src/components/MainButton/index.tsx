@@ -15,6 +15,7 @@ export const MainButton: FC<Props> = ({ children, onClick, isEditState }) => {
 }
 
 type Props = {
+  isEditState: boolean
   children: ReactNode
   onClick: () => void
 }

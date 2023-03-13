@@ -6,7 +6,7 @@ export const Modal: FC<Props> = ({ children, onClose }) => {
       data-testid='modal'
       onClick={onClose}
       tabIndex={-1}
-      className='bg-opacity-90 bg-gray-900 py-20 px-5 absolute top-0 left-0 z-50 h-full w-full p-4'
+      className='bg-opacity-90 bg-gray-900 py-20 px-5 absolute top-0 left-0 z-50 h-full w-full p-4 md:px-60'
     >
       <ModalContent>{children}</ModalContent>
     </div>

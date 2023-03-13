@@ -1,14 +1,7 @@
 import React, { ChangeEventHandler, FC } from 'react'
 import { getScreenThemeStyles, ScreenTheme } from '../../utils/screenTheme'
 
-export const TextScreen: FC<Props> = ({
-  onChange,
-  value,
-  thaiFont,
-  isDisabled,
-  screenTheme,
-  onClick,
-}) => {
+export const TextScreen: FC<Props> = ({ onChange, value, isDisabled, screenTheme, onClick }) => {
   const placeholder = isDisabled ? '' : 'Start Typing...'
 
   return (
@@ -23,14 +16,13 @@ export const TextScreen: FC<Props> = ({
         disabled={isDisabled}
         onChange={onChange}
         lang='th'
-        className={`h-full text-3xl w-full no-underline rounded-lg bg-white p-2 resize-none
+        className={`h-full w-full no-underline rounded-lg bg-white p-2 resize-none
         ${getScreenThemeStyles(screenTheme)}`}
       />
     </div>
   )
 }
-// 'font-notoSerifThai'
-// font-notoSansThai
+
 type Props = {
   onChange: ChangeEventHandler
   value: string

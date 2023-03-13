@@ -23,19 +23,8 @@ function App() {
 
   return (
     <AppWrapper isDarkTheme={isDarkThemeActive}>
-      {isMenuOpen && (
-        <Modal onClose={() => setMenuOpen(!isMenuOpen)}>
-          <ScreenMenu
-            thaiFont={screenTheme.thaiFonts}
-            setScreenThemeValue={(key, value) =>
-              setScreenThemeValue({ ...screenTheme, [key]: value })
-            }
-            onClose={() => setMenuOpen(false)}
-          />
-        </Modal>
-      )}
       <Header>
-        <FaFont onClick={() => setMenuOpen(!isMenuOpen)} />
+        <FaFont style={{ cursor: 'pointer' }} onClick={() => setMenuOpen(!isMenuOpen)} />
         <DarkModeToggle
           isDarkMode={isDarkThemeActive}
           onClick={() => setDarkThemeActive(!isDarkThemeActive)}
@@ -46,12 +35,23 @@ function App() {
         screenTheme={screenTheme}
         onClick={() => setMenuOpen(false)}
         value={isInputActive ? inputValue : segmentText(inputValue)}
-        thaiFont={screenTheme.thaiFonts}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
       />
       <MainButton isEditState={isInputActive} onClick={() => setInputActive(!isInputActive)}>
         {isInputActive ? 'Add Spaces' : 'Type Text'}
       </MainButton>
+
+      {isMenuOpen && (
+        <Modal onClose={() => setMenuOpen(!isMenuOpen)}>
+          <ScreenMenu
+            screenTheme={screenTheme}
+            setScreenThemeValue={(key, value) =>
+              setScreenThemeValue({ ...screenTheme, [key]: value })
+            }
+            onClose={() => setMenuOpen(false)}
+          />
+        </Modal>
+      )}
     </AppWrapper>
   )
 }
