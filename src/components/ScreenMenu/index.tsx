@@ -35,7 +35,7 @@ export const ScreenMenu: FC<Props> = ({ screenTheme, setScreenThemeValue }) => {
   }
 
   return (
-    <div className={`text-xl py-4 px-2  w-full ${screenTheme.thaiFont} font-sono`}>
+    <div className={`text-xl py-4 px-2  w-full ${screenTheme.thaiFont} font-sans`}>
       <ul className='flex flex-col gap-10 justify-start w-full'>
         <ThaiFontsMenuItem
           isActive={isMenuItemActive(MENU_ITEMS.thaiFont)}

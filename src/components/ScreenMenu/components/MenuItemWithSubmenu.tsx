@@ -6,14 +6,14 @@ import { FaAngleDown, FaAngleRight } from 'react-icons/fa'
 export const MenuItemWithSubmenu: FC<Props> = ({ name, isActive, onClick, children }) => {
   return (
     <li className='cursor-pointer'>
-      <MenuButton isActive={isActive} onClick={onClick}>
-        <div className='text-sm mr-4 text-violet-300'>
-          {isActive ? <FaAngleDown /> : <FaAngleRight />}
-        </div>
-        <div className='text-violet-900'>{name}</div>
-      </MenuButton>
+      <div className='text-blue-700'>
+        <MenuButton isActive={isActive} onClick={onClick}>
+          <div className='text-sm mr-4'>{isActive ? <FaAngleDown /> : <FaAngleRight />}</div>
+          <div className=''>{name}</div>
+        </MenuButton>
+      </div>
       <Scale isOpen={isActive}>
-        <ul className='py-2 px-6 space-y-2'>{children}</ul>
+        <ul className='py-2 px-6 space-y-2 '>{children}</ul>
       </Scale>
     </li>
   )

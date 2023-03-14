@@ -4,7 +4,7 @@ export const FONT_WEIGHTS = ['font-light', 'font-medium', 'font-bold'] as const
 export const THAI_FONTS = ['font-notoSansThai', 'font-notoSerifThai'] as const
 
 export const initialScreenTheme: ScreenTheme = {
-  fontSize: FONT_SIZES[0],
+  fontSize: FONT_SIZES[1],
   fontStyle: FONT_STYLES[0],
   fontWeight: FONT_WEIGHTS[0],
   thaiFont: THAI_FONTS[0],

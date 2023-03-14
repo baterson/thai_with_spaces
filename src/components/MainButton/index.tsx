@@ -6,7 +6,7 @@ export const MainButton: FC<Props> = ({ children, onClick, isEditState }) => {
   return (
     <button
       data-testid='main-button'
-      className={`h-16 text-xl text-white rounded-lg ${bgStyle}`}
+      className={`h-16 text-2xl rounded-md bg-blue-400 text-white `}
       onClick={onClick}
     >
       {children}

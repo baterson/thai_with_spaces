@@ -1,14 +1,12 @@
 import React, { ChangeEventHandler, FC } from 'react'
-import { getScreenThemeStyles, ScreenTheme } from '../../utils/screenTheme'
+import { initialScreenTheme, getScreenThemeStyles, ScreenTheme } from '../../utils/screenTheme'
 
 export const TextScreen: FC<Props> = ({ onChange, value, isDisabled, screenTheme, onClick }) => {
-  const placeholder = isDisabled ? '' : 'Start Typing...'
+  const placeholder = isDisabled ? '' : 'Add Thai text here...'
+  const emptyStyles = initialScreenTheme.fontSize
 
   return (
-    <div
-      className={`h-full w-full flex-1 border-2 rounded-lg border-opacity-20 border-violet-900`}
-      onClick={() => onClick()}
-    >
+    <div className={`h-full w-full flex-1 pt-6 mb-6 border-b`} onClick={() => onClick()}>
       <textarea
         placeholder={placeholder}
         data-testid='text-screen'
@@ -17,7 +15,7 @@ export const TextScreen: FC<Props> = ({ onChange, value, isDisabled, screenTheme
         onChange={onChange}
         lang='th'
         className={`h-full w-full no-underline rounded-lg bg-white p-2 resize-none
-        ${getScreenThemeStyles(screenTheme)}`}
+        ${value ? getScreenThemeStyles(screenTheme) : emptyStyles}`}
       />
     </div>
   )
