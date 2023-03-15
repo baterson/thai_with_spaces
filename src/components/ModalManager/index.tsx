@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { ModalContainer } from '../ModalContainer'
 import { About, Font, FontSize } from './Modals'
 
-export const ModalManager = ({ modalName, onClose }) => {
+export const ModalManager = ({ modalName, setScreenThemeValue, onClose }) => {
   if (!modalName) {
     return null
   }
@@ -18,13 +18,13 @@ export const ModalManager = ({ modalName, onClose }) => {
       case 'Font':
         return (
           <ModalContainer header='Font'>
-            <Font />
+            <Font setFont={(value) => setScreenThemeValue({ font: value })} />
           </ModalContainer>
         )
       case 'FontSize':
         return (
           <ModalContainer header='Font Size'>
-            <FontSize />
+            <FontSize setFontSize={(value) => setScreenThemeValue({ fontSize: value })} />
           </ModalContainer>
         )
       default:

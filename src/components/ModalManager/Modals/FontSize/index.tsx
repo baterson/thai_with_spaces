@@ -17,7 +17,10 @@ export const FontSize = ({ setFontSize }) => {
       <ul className='px-4 flex flex-col pt-4 gap-10 overflow-y-auto'>
         {FONT_SIZES.map((fontSize) => (
           <div>
-            <li className={`${fontSize} flex gap-2 font-normal border-b pb-4 border-gray-100`}>
+            <li
+              onClick={() => setFontSize(fontSize)}
+              className={`${fontSize} flex gap-2 font-normal border-b pb-4 border-gray-100`}
+            >
               <div>{FONT_SIZE_NAMES[fontSize]}</div>
               <div className='truncate'>ข้อคอข้อคอข้อคอข้อคอ</div>
             </li>

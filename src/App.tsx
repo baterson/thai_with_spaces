@@ -18,9 +18,9 @@ function App() {
 
   const [currentModal, setCurrentModal] = useState('')
 
-  const [screenTheme, setScreenThemeValue] = useState(initialScreenTheme)
+  const [screenTheme, setScreenTheme] = useState(initialScreenTheme)
   const [isInputActive, setInputActive] = useState(true)
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState('มันยากมากสำหรับฉันที่จะอ่านข้อความเป็นภาษาไทย')
   //มันยากมากสำหรับฉันที่จะอ่านข้อความเป็นภาษาไทย
   return (
     <AppWrapper isDarkTheme={isDarkThemeActive}>
@@ -61,7 +61,11 @@ function App() {
         </div>
       </div>
 
-      <ModalManager modalName={currentModal} onClose={() => setCurrentModal('')} />
+      <ModalManager
+        setScreenThemeValue={(value) => setScreenTheme({ ...screenTheme, ...value })}
+        modalName={currentModal}
+        onClose={() => setCurrentModal('')}
+      />
 
       {/* {isMenuOpen && (
         <Modal onClose={() => setMenuOpen(!isMenuOpen)}>
