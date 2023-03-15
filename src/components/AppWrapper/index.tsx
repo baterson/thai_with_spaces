@@ -4,9 +4,9 @@ export const AppWrapper: FC<Props> = ({ children, isDarkTheme }) => {
   return (
     <div
       data-testid='app-wrapper'
-      className={`px-5 py-4 relative h-full w-full box-border flex flex-col flex-wrap ${
+      className={`relative h-full w-full flex flex-col ${
         isDarkTheme && 'dark'
-      }  md:px-60 md:py-10`}
+      }  md:px-60 md:py-10 bg-gray-50`}
     >
       {children}
     </div>

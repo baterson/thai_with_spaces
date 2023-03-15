@@ -5,9 +5,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        notoSansThai: ['NotoSansThai'],
-        notoSerifThai: ['NotoSerifThai'],
-        sono: ['Sono'],
+        kanit: ['Kanit', 'sans-serif'],
+        sarabun: ['Sarabun', 'sans-serif'],
+        chakraPetch: ['Chakra+Petch', 'sans-serif'],
+        taviraj: ['Taviraj', 'sans-serif'],
+        niramit: ['Niramit', 'sans-serif'],
+        anthiti: ['Athiti', 'sans-serif'],
       },
     },
   },

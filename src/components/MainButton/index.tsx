@@ -1,21 +1,17 @@
 import React, { FC, ReactNode } from 'react'
+import { BiSpaceBar } from 'react-icons/bi'
 
-export const MainButton: FC<Props> = ({ children, onClick, isEditState }) => {
-  const bgStyle = isEditState ? 'bg-violet-500' : 'bg-amber-500'
-
+export const MainButton: FC<Props> = ({ onClick }) => {
   return (
     <button
-      data-testid='main-button'
-      className={`h-16 text-2xl rounded-md bg-blue-400 text-white `}
       onClick={onClick}
+      className='rounded-full text-4xl h-24 w-24 p-4 bg-teal-300  flex items-center justify-center'
     >
-      {children}
+      <BiSpaceBar />
     </button>
   )
 }
 
 type Props = {
-  isEditState: boolean
-  children: ReactNode
   onClick: () => void
 }
