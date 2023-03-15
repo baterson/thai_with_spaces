@@ -20,8 +20,8 @@ function App() {
 
   const [screenTheme, setScreenThemeValue] = useState(initialScreenTheme)
   const [isInputActive, setInputActive] = useState(true)
-  const [inputValue, setInputValue] = useState('มันยากมากสำหรับฉันที่จะอ่านข้อความเป็นภาษาไทย')
-
+  const [inputValue, setInputValue] = useState('')
+  //มันยากมากสำหรับฉันที่จะอ่านข้อความเป็นภาษาไทย
   return (
     <AppWrapper isDarkTheme={isDarkThemeActive}>
       <Header />

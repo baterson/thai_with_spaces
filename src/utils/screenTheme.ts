@@ -30,7 +30,7 @@ export const THAI_FONTS = [
 export const initialScreenTheme: ScreenTheme = {
   fontSize: FONT_SIZES[1],
   fontWeight: FONT_WEIGHTS[3],
-  font: THAI_FONTS[0],
+  font: THAI_FONTS[1],
 }
 
 export const getScreenThemeStyles = (screenTheme: ScreenTheme) => {
