@@ -19,22 +19,14 @@ export const HEADERS = {
 
 type History = { [key: string]: string }
 
-const HISTORYEXAMPLE = {
-  1: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
-  2: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
-  3: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
-  5: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม, ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
-  6: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
-}
-
 export const useAppState = () => {
   // App state
   const [currentModal, setCurrentModal] = useState(MODALS.none)
   const [header, setHeader] = useState(HEADERS.none)
-  const [isInputSwiped, setInputSwiped] = useState(true)
+  const [isInputSwiped, setInputSwiped] = useState(false)
   const [isInputActive, setInputActive] = useState(true)
   const [inputValue, setInputValue] = useState('')
-  const [historyItems, setHistory] = useState<History>(HISTORYEXAMPLE)
+  const [historyItems, setHistory] = useState<History>({})
 
   // Theme state
   const [inputTheme, setInputTheme] = useState(initialInputTheme)
@@ -61,10 +53,8 @@ export const useAppState = () => {
   //#endregion
 
   // #region State effects
-
+  // Prevent saving the same item multiple times in a row
   useEffect(() => {
-    // Prevent saving the same item multiple times in a row
-
     if (lastHistoryItem === inputValue) {
       return
     } else {
@@ -72,9 +62,8 @@ export const useAppState = () => {
     }
   }, [isInputActive])
 
+  // Controlls header state
   useEffect(() => {
-    // Controlls header state
-
     if (currentModal) {
       setHeader(HEADERS[currentModal])
     } else if (isInputSwiped) {
@@ -83,6 +72,22 @@ export const useAppState = () => {
       setHeader(HEADERS.none)
     }
   }, [currentModal, isInputSwiped])
+
+  // Setting up history from localstorage
+  useEffect(() => {
+    const history = localStorage.getItem('history')
+    if (history) {
+      setHistory(JSON.parse(history))
+    }
+  }, [])
+
+  // Save history to localstorage on history change
+  useEffect(() => {
+    if (lastHistoryItem) {
+      localStorage.setItem('history', JSON.stringify(historyItems))
+    }
+  }, [lastHistoryItem])
+
   //#endregion
 
   return {

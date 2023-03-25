@@ -23,16 +23,14 @@ export const About = () => {
         Try an example
       </p>
       <p>App purpose is to help a beginner read Thai. Because Thai language rarely use spaces.</p>
-      <p className=''>
-        <p>
-          It's an opensource project. You can check the source code on the{' '}
-          <a href='https://github.com/baterson/thai_with_spaces' className='text-blue-300'>
-            Github
-          </a>
-          <span className='ml-2 text-blue-300 text-2xl  inline-block'>
-            <FiGithub />
-          </span>
-        </p>
+      <p>
+        It's an opensource project. You can check the source code on the{' '}
+        <a href='https://github.com/baterson/thai_with_spaces' className='text-blue-300'>
+          Github
+        </a>
+        <span className='ml-2 text-blue-300 text-2xl  inline-block'>
+          <FiGithub />
+        </span>
       </p>
     </div>
   )
