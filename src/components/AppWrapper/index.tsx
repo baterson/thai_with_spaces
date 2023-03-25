@@ -8,8 +8,7 @@ export const AppWrapper: FC<Props> = ({ children }) => {
       data-testid='app-wrapper'
       className={`relative h-full w-full flex flex-col ${
         isActive && 'dark'
-      }  md:px-60 md:py-10 bg-gray-50
-      `}
+      }  md:px-80 md:py-10 bg-gray-50`}
     >
       {children}
     </div>

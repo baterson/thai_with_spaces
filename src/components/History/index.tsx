@@ -20,7 +20,7 @@ export const History = forwardRef((_, ref) => {
   return (
     <ul
       ref={ref}
-      className={`w-full text-xl px-4 pt-4 pb-8 h-full z-30 gap-6 overflow-x-hidden overflow-y-scroll flex flex-col list-none absolute bg-white rounded-b-3xl transition-all`}
+      className={`w-full text-xl flex flex-col list-none px-4 pt-4 pb-8 h-full gap-6 overflow-x-hidden overflow-y-scroll bg-white rounded-b-3xl`}
     >
       {Object.keys(historyItems).map((key) => {
         return (

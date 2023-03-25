@@ -2,7 +2,6 @@ import { Transition } from '@headlessui/react'
 import { FC, ReactNode, useState } from 'react'
 import { BiTrash } from 'react-icons/bi'
 import { useSwipeable } from 'react-swipeable'
-import { useHistory } from '../../state/hooks'
 
 export const SwipeableItem: FC<Props> = ({ onLeave, children }) => {
   const [leftDir, rightDir] = ['-translate-x-full', 'translate-x-full']
@@ -25,7 +24,7 @@ export const SwipeableItem: FC<Props> = ({ onLeave, children }) => {
       <Transition.Child
         as={'div'}
         className='w-full flex justify-between gap-4 items-center py-3 h-20 max-h-20'
-        leave='transition duration-300'
+        leave='transition duration-200'
         leaveFrom='translate-x-0'
         leaveTo={translateDir}
         {...swipeHandlers}
