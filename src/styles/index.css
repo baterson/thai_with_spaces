@@ -9,6 +9,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overscroll-behavior: contain;
+}
+
 /* Remove blue bg on mobile device from the main button, on tap */
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

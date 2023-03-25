@@ -1,5 +1,6 @@
 import React from 'react'
-import { FONT_SIZES } from '../../../../utils/screenTheme'
+import { useInputTheme } from '../../../../state/hooks'
+import { FONT_SIZES } from '../../../../styles/inputTheme'
 
 const FONT_SIZE_NAMES = {
   [FONT_SIZES[0]]: 20,
@@ -11,20 +12,21 @@ const FONT_SIZE_NAMES = {
   [FONT_SIZES[6]]: 72,
 }
 
-export const FontSize = ({ setFontSize }) => {
+export const FontSize = () => {
+  const { setInputThemeValue } = useInputTheme()
+
   return (
     <div className='flex flex-col w-full h-full'>
       <ul className='px-4 flex flex-col pt-4 gap-10 overflow-y-auto'>
         {FONT_SIZES.map((fontSize) => (
-          <div>
-            <li
-              onClick={() => setFontSize(fontSize)}
-              className={`${fontSize} flex gap-2 font-normal border-b pb-4 border-gray-100`}
-            >
-              <div>{FONT_SIZE_NAMES[fontSize]}</div>
-              <div className='truncate'>ข้อคอข้อคอข้อคอข้อคอ</div>
-            </li>
-          </div>
+          <li
+            key={fontSize}
+            onClick={() => setInputThemeValue({ fontSize })}
+            className={`${fontSize} flex gap-2 font-normal border-b pb-4 border-gray-100`}
+          >
+            <div>{FONT_SIZE_NAMES[fontSize]}</div>
+            <div className='truncate'>ข้อคอข้อคอข้อคอข้อคอ</div>
+          </li>
         ))}
       </ul>
     </div>

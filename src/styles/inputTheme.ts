@@ -27,23 +27,22 @@ export const THAI_FONTS = [
   'font-anthiti',
 ] as const
 
-export const initialScreenTheme: ScreenTheme = {
+export const initialInputTheme: InputTheme = {
   fontSize: FONT_SIZES[1],
   fontWeight: FONT_WEIGHTS[3],
   font: THAI_FONTS[1],
 }
 
-export const getScreenThemeStyles = (screenTheme: ScreenTheme) => {
-  return Object.values(screenTheme).join(' ')
+export const getInputThemeStyles = (inputTheme: InputTheme) => {
+  return Object.values(inputTheme).join(' ')
 }
 
-export type ScreenTheme = {
+export type InputTheme = {
   fontSize: typeof FONT_SIZES[number]
   fontWeight: typeof FONT_WEIGHTS[number]
   font: typeof THAI_FONTS[number]
 }
-export type ScreenThemeKeys = keyof ScreenTheme
-export type ScreenThemeValues =
+export type InputThemeValues =
   | typeof FONT_SIZES[number]
   | typeof FONT_WEIGHTS[number]
   | typeof THAI_FONTS[number]

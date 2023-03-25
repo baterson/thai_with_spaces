@@ -1,12 +1,15 @@
 import React, { FC, ReactNode } from 'react'
+import { useDarkTheme } from '../../state/hooks'
 
-export const AppWrapper: FC<Props> = ({ children, isDarkTheme }) => {
+export const AppWrapper: FC<Props> = ({ children }) => {
+  const { isActive } = useDarkTheme()
   return (
     <div
       data-testid='app-wrapper'
       className={`relative h-full w-full flex flex-col ${
-        isDarkTheme && 'dark'
-      }  md:px-60 md:py-10 bg-gray-50`}
+        isActive && 'dark'
+      }  md:px-60 md:py-10 bg-gray-50
+      `}
     >
       {children}
     </div>
@@ -15,5 +18,4 @@ export const AppWrapper: FC<Props> = ({ children, isDarkTheme }) => {
 
 type Props = {
   children: ReactNode
-  isDarkTheme: boolean
 }
