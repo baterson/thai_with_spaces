@@ -9,7 +9,7 @@ export const Header: FC = () => {
 
   return (
     <div
-      className={`relative basis-1/12 flex w-full text-2xl items-center px-6 py-4 h-12 bg-white ${styles}`}
+      className={`bg-white z-default relative basis-1/12 flex w-full text-2xl items-center px-6 py-4 h-12 ${styles}`}
     >
       {header && (
         <Fragment>

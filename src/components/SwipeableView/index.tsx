@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { MainInput } from '../MainInput'
 import { History } from '../History'
-import { Background } from './components/Background'
+import { DimmedBackground } from './components/DimmedBackground'
 import { Drawer } from './components/Drawer'
 import { useSwipeController } from './hooks'
 import { isBottomScroll, isTopScroll } from './utils'
 import { useInput } from '../../state/hooks'
+import { Transition } from '@headlessui/react'
 
 const CONTAINER_HEIGHT = {
   initial: 100,
@@ -48,14 +49,14 @@ export const SwipeableView = () => {
 
   return (
     <div
-      className='bg-white transition-all relative rounded-b-3xl'
+      className='transition-all relative rounded-b-3xl'
       style={{
         height: `${containerHeight}%`,
       }}
       {...swipeHandlers}
     >
-      <Background isHidden={!isInputSwiped} />
-      <div className={`z-30 w-full h-full relative bg-white rounded-b-3xl transition-all`}>
+      <DimmedBackground show={isInputSwiped} />
+      <div className={`w-full h-full relative bg-white rounded-b-3xl transition-all`}>
         <Drawer />
         {isInputSwiped ? <History ref={historyRef} /> : <MainInput ref={inputRef} />}
       </div>

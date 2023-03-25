@@ -19,14 +19,22 @@ export const HEADERS = {
 
 type History = { [key: string]: string }
 
+const HISTORYEXAMPLE = {
+  1: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
+  2: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
+  3: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
+  5: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม, ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
+  6: 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม',
+}
+
 export const useAppState = () => {
   // App state
   const [currentModal, setCurrentModal] = useState(MODALS.none)
   const [header, setHeader] = useState(HEADERS.none)
-  const [isInputSwiped, setInputSwiped] = useState(false)
+  const [isInputSwiped, setInputSwiped] = useState(true)
   const [isInputActive, setInputActive] = useState(true)
   const [inputValue, setInputValue] = useState('')
-  const [historyItems, setHistory] = useState<History>({})
+  const [historyItems, setHistory] = useState<History>(HISTORYEXAMPLE)
 
   // Theme state
   const [inputTheme, setInputTheme] = useState(initialInputTheme)

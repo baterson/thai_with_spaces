@@ -4,6 +4,13 @@ module.exports = {
   content: ['index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      zIndex: {
+        bg: '0',
+        default: '1',
+        overlay: '2',
+        modal: '3',
+      },
+
       fontFamily: {
         kanit: ['Kanit', 'sans-serif'],
         sarabun: ['Sarabun', 'sans-serif'],

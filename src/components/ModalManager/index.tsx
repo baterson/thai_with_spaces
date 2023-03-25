@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
 import { useModals } from '../../state/hooks'
 import { MODALS } from '../../state/state'
 import { ModalContainer } from '../ModalContainer'

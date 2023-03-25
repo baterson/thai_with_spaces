@@ -22,8 +22,10 @@ export const MainInput = React.forwardRef((_, ref) => {
       lang='th'
       className={`bg-white h-full w-full no-underline resize-none p-2 flex-1 rounded-b-3xl
         ${inputValue ? getInputThemeStyles(inputTheme) : emptyStyles}
-            absolute z-30
+            absolute
         `}
     />
   )
 })
+
+//z-30
