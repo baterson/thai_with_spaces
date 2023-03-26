@@ -19,14 +19,21 @@ export const HEADERS = {
 
 type History = { [key: string]: string }
 
+var c = {}
+
+for (let i = 0; i < 20; i++) {
+  c[i] =
+    'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม'
+}
+
 export const useAppState = () => {
   // App state
   const [currentModal, setCurrentModal] = useState(MODALS.none)
   const [header, setHeader] = useState(HEADERS.none)
-  const [isInputSwiped, setInputSwiped] = useState(false)
+  const [isInputSwiped, setInputSwiped] = useState(true)
   const [isInputActive, setInputActive] = useState(true)
   const [inputValue, setInputValue] = useState('')
-  const [historyItems, setHistory] = useState<History>({})
+  const [historyItems, setHistory] = useState<History>(c)
 
   // Theme state
   const [inputTheme, setInputTheme] = useState(initialInputTheme)
@@ -74,19 +81,19 @@ export const useAppState = () => {
   }, [currentModal, isInputSwiped])
 
   // Setting up history from localstorage
-  useEffect(() => {
-    const history = localStorage.getItem('history')
-    if (history) {
-      setHistory(JSON.parse(history))
-    }
-  }, [])
+  //   useEffect(() => {
+  //     const history = localStorage.getItem('history')
+  //     if (history) {
+  //       setHistory(JSON.parse(history))
+  //     }
+  //   }, [])
 
-  // Save history to localstorage on history change
-  useEffect(() => {
-    if (lastHistoryItem) {
-      localStorage.setItem('history', JSON.stringify(historyItems))
-    }
-  }, [lastHistoryItem])
+  //   // Save history to localstorage on history change
+  //   useEffect(() => {
+  //     if (lastHistoryItem) {
+  //       localStorage.setItem('history', JSON.stringify(historyItems))
+  //     }
+  //   }, [lastHistoryItem])
 
   //#endregion
 
@@ -117,7 +124,7 @@ export const useAppState = () => {
       setInputThemeValue,
     },
     darkTheme: {
-      isActive: isDarkThemeActive,
+      isDarkThemeActive,
       setDarkThemeActive,
     },
   }

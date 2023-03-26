@@ -1,15 +1,16 @@
 import React, { FC } from 'react'
-import { FaSun, FaMoon } from 'react-icons/fa'
+import { BiSun, BiMoon } from 'react-icons/bi'
+import { useDarkTheme } from '../../state/hooks'
 
-export const DarkModeToggle: FC<Props> = ({ onClick, isDarkMode }) => {
+export const DarkModeToggle: FC = () => {
+  const { setDarkThemeActive, isDarkThemeActive } = useDarkTheme()
   return (
-    <div onClick={onClick} data-testid='dark-mode-toggle' className='cursor-pointer'>
-      {isDarkMode ? <FaSun data-testid='sun-icon' /> : <FaMoon data-testid='moon-icon' />}
+    <div
+      className='text-3xl text-gray-400 dark:text-white'
+      onClick={() => setDarkThemeActive(!isDarkThemeActive)}
+      data-testid='dark-mode-toggle'
+    >
+      {isDarkThemeActive ? <BiSun data-testid='sun-icon' /> : <BiMoon data-testid='moon-icon' />}
     </div>
   )
-}
-
-type Props = {
-  onClick: () => void
-  isDarkMode: boolean
 }

@@ -14,10 +14,10 @@ function App() {
     <StateProvider>
       <AppWrapper>
         <Header />
-        <div className='basis-8/12 relative w-full text-xl flex-1 bg-white rounded-b-3xl'>
+        <div className='basis-8/12 relative w-full text-xl flex-1 bg-white border-0 rounded-b-3xl'>
           <SwipeableView />
         </div>
-        <div className='basis-3/12 flex flex-col gap-4 w-full pb-6 pt-3 px-4 bg-gray-50'>
+        <div className='basis-3/12 flex flex-col gap-4 w-full pb-6 pt-3 px-4'>
           <InputThemeButtons />
           <MainButtonArea />
         </div>

@@ -49,14 +49,15 @@ export const SwipeableView = () => {
 
   return (
     <div
-      className='transition-all relative rounded-b-3xl'
+      className='transition-all relative'
       style={{
         height: `${containerHeight}%`,
+        maxHeight: '130%',
       }}
       {...swipeHandlers}
     >
       <DimmedBackground show={isInputSwiped} />
-      <div className={`w-full h-full relative bg-white rounded-b-3xl transition-all`}>
+      <div className={`w-full h-full relative rounded-b-3xl transition-all`}>
         <Drawer />
         {isInputSwiped ? <History ref={historyRef} /> : <MainInput ref={inputRef} />}
       </div>

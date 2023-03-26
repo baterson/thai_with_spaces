@@ -12,7 +12,7 @@ export const DimmedBackground: FC<Props> = ({ show }) => {
       leaveFrom='opacity-70'
       leaveTo='opacity-0'
     >
-      <div className='absolute z-bg h-[140%] w-full bg-gray-500'></div>
+      <div className='absolute z-bg h-[140%] w-full bg-gray-500 '></div>
     </Transition>
   )
 }

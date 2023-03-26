@@ -20,12 +20,10 @@ export const MainInput = React.forwardRef((_, ref) => {
       disabled={!isInputActive}
       onChange={(e) => setInputValue(e.target.value)}
       lang='th'
-      className={`bg-white h-full w-full no-underline resize-none p-2 flex-1 rounded-b-3xl
+      className={`bg-screenArea text-black h-full w-full no-underline  resize-none p-2 flex-1 border-0 rounded-b-3xl
         ${inputValue ? getInputThemeStyles(inputTheme) : emptyStyles}
-            absolute
+            absolute  dark:bg-screenArea-dark  dark:text-white
         `}
     />
   )
 })
-
-//z-30
