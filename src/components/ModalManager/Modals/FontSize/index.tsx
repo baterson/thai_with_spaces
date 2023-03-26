@@ -22,7 +22,7 @@ export const FontSize = () => {
           <li
             key={fontSize}
             onClick={() => setInputThemeValue({ fontSize })}
-            className={`${fontSize} flex gap-2 font-normal border-b pb-4 border-gray-100`}
+            className={`${fontSize} flex gap-2 font-normal border-b pb-4 border-gray-100 dark:border-gray-600`}
           >
             <div>{FONT_SIZE_NAMES[fontSize]}</div>
             <div className='truncate'>ข้อคอข้อคอข้อคอข้อคอ</div>

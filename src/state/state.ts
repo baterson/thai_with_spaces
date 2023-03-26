@@ -23,10 +23,10 @@ export const useAppState = () => {
   // App state
   const [currentModal, setCurrentModal] = useState(MODALS.none)
   const [header, setHeader] = useState(HEADERS.none)
-  const [isInputSwiped, setInputSwiped] = useState(true)
+  const [isInputSwiped, setInputSwiped] = useState(false)
   const [isInputActive, _setInputActive] = useState(true)
   const [inputValue, setInputValue] = useState('')
-  const [historyItems, setHistory] = useState<History>(c)
+  const [historyItems, setHistory] = useState<History>({})
 
   // Theme state
   const [inputTheme, setInputTheme] = useState(initialInputTheme)
