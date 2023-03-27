@@ -7,7 +7,7 @@ import { MainButton } from '../MainButton'
 
 export const MainButtonArea = () => {
   const { setCurrentModal } = useModals()
-  const { setInputActive, isInputActive, clearInput } = useInput()
+  const { clearInput } = useInput()
 
   return (
     <div className='flex justify-between items-end px-8 mt-6'>
@@ -17,7 +17,7 @@ export const MainButtonArea = () => {
         </CircleButton>
         <div className='text-xs'>About</div>
       </div>
-      <MainButton onClick={() => setInputActive(!isInputActive)} />
+      <MainButton />
       <div className='flex flex-col items-center gap-2 text-sm '>
         <CircleButton onClick={() => {}} customColor='bg-red-500 dark:bg-red-900'>
           <BiX onClick={clearInput} />

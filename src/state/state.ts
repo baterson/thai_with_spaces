@@ -61,6 +61,7 @@ export const useAppState = () => {
     if (inputValue) {
       addToHistory(inputValue)
     }
+    _setInputActive(true)
     setInputValue('')
   }
 
