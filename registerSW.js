@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://baterson.github.io/thai_with_spaces/sw.js', { scope: 'https://baterson.github.io/thai_with_spaces/' })})}
