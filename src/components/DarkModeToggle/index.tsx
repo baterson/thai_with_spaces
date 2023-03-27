@@ -4,9 +4,10 @@ import { useDarkTheme } from '../../state/hooks'
 
 export const DarkModeToggle: FC = () => {
   const { setDarkThemeActive, isDarkThemeActive } = useDarkTheme()
+
   return (
     <div
-      className='text-3xl text-gray-400 dark:text-white'
+      className='text-3xl text-gray-400 dark:text-gray-400'
       onClick={() => setDarkThemeActive(!isDarkThemeActive)}
       data-testid='dark-mode-toggle'
     >

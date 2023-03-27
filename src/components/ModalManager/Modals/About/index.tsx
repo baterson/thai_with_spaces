@@ -2,7 +2,8 @@ import React from 'react'
 import { FiGithub } from 'react-icons/fi'
 import { useInput, useModals, useHistory } from '../../../../state/hooks'
 
-const EXAMPLE_INPUT = 'ภาษาไทยเป็นภาษาที่น่าสนใจมากแม้ว่าจะไม่มีช่องว่างก็ตาม'
+const EXAMPLE_INPUT =
+  'วัวสี่ตัวเป็นมิตรที่รักใคร่กลมเกลียวกันมาก ในยามกินหรือ ยามนอนก็ไม่เคยแยกจากกัน เมื่อใดที่ราชสีห์หมายจะจู่โจม มันก็ จะหันหลังชนกัน แล้วหันหัวที่มีเขาแหลมคมเผชิญหน้ากับราชสีห์'
 
 export const About = () => {
   const { setInputValue } = useInput()

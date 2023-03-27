@@ -7,7 +7,7 @@ export const MainInput = React.forwardRef((_, ref) => {
   const { inputValue, isInputActive, setInputValue } = useInput()
   const { inputTheme } = useInputTheme()
 
-  const placeholder = isInputActive ? 'Add Thai text here...' : ''
+  const placeholder = isInputActive ? 'Add Thai text or try an example in "About" section' : ''
   const emptyStyles = initialInputTheme.fontSize
   const value = isInputActive ? inputValue : segmentText(inputValue)
 
@@ -20,9 +20,9 @@ export const MainInput = React.forwardRef((_, ref) => {
       disabled={!isInputActive}
       onChange={(e) => setInputValue(e.target.value)}
       lang='th'
-      className={`bg-screenArea text-black h-full w-full no-underline  resize-none p-2 flex-1 border-0 rounded-b-3xl
+      className={`bg-screenArea text-black placeholder-opacity-30 placeholder-gray-500 h-full w-full no-underline  resize-none p-2 flex-1 border-0 rounded-b-3xl
         ${inputValue ? getInputThemeStyles(inputTheme) : emptyStyles}
-            absolute  dark:bg-screenArea-dark  dark:text-white
+            absolute  dark:bg-screenArea-dark dark:text-white dark:placeholder-gray-500
         `}
     />
   )

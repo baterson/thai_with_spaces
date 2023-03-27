@@ -57,6 +57,13 @@ export const useAppState = () => {
     return _setInputActive(isActive)
   }
 
+  const clearInput = () => {
+    if (inputValue) {
+      addToHistory(inputValue)
+    }
+    setInputValue('')
+  }
+
   const closeModal = () => setCurrentModal(MODALS.none)
   //#endregion
 
@@ -106,6 +113,7 @@ export const useAppState = () => {
       setInputActive,
       setInputValue,
       setInputSwiped,
+      clearInput,
     },
     header: {
       header,
